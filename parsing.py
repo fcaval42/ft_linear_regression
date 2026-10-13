@@ -1,10 +1,11 @@
 import csv
+#import sys
 
-def load_data(file_name: str):
+def load_data(file_name: str) -> list[str]:
     try:
         with open(file_name, newline='') as f:
-            # DictReader = lit fichier CSV et convertit chaque ligne en un dico.
-            # Les clés correspondent aux en-têtes (la première ligne du fichier)
+        # DictReader = lit fichier CSV et convertit chaque ligne en un dico.
+        # Les clés correspondent aux en-têtes (la première ligne du fichier)
             rows = list(csv.DictReader(f))
     except FileNotFoundError:
         raise ValueError(f"File not found : {file_name}")
@@ -23,3 +24,11 @@ def load_data(file_name: str):
 
         km.append(k)
         price.append(p)
+
+    if len(km) < 2:
+        raise ValueError(f"You need at least two kilometer values to perform "
+                         "a regression analysis.")
+
+    return km, price
+
+
