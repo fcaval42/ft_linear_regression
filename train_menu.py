@@ -2,6 +2,7 @@ from global_variables import Global_variables
 from parsing import load_data
 from normalize import normalize, denormalize_thetas
 from train import train
+from plot import plot_data_with_regression
 
 
 def save_thetas(theta0, theta1, path="thetas.txt"):
@@ -27,6 +28,8 @@ def training():
 
     # 3. revenir a l'echelle reelle
     theta0, theta1 = denormalize_thetas(theta0, theta1, km_min, km_max)
+
+    plot_data_with_regression(km, price, theta0, theta1, km_min, km_max)
 
     # 4. sauvegarder pour predict.py
     save_thetas(theta0, theta1)
