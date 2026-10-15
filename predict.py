@@ -6,7 +6,12 @@ def load_thetas(path: str) -> tuple[int, int]:
         with open(path) as f:
             theta0 = float(f.readline()) # ligne 1
             theta1 = float(f.readline()) # ligne 2
+        print("\n" + Global_variables.INFO + f"Loading Theta :" + "\n")
+        print(f"Theta0 = {theta0}")
+        print(f"Theta1 = {theta1}\n")
     except (FileNotFoundError, ValueError):
+        print("Theta0 and Theta1 are set to 0 by default. " + "\n" +
+              "Start the workout to get a consistent estimate")
         return 0.0, 0.0
 
     return theta0, theta1

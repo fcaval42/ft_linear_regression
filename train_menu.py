@@ -1,7 +1,7 @@
 from global_variables import Global_variables
 from parsing import load_data
 from normalize import normalize, denormalize_thetas
-from estimate import train
+from train import train
 
 
 def save_thetas(theta0, theta1, path="thetas.txt"):
