@@ -1,7 +1,7 @@
 import sys
-from global_variables import Global_variables
-from predict import predict
-from train_menu import training
+from utils.global_variables import Global_variables
+from predict.predict import predict
+from train.train_menu import training
 
 
 def main():

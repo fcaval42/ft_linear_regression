@@ -1,5 +1,5 @@
 import sys
-from global_variables import Global_variables
+from utils.global_variables import Global_variables
 
 def load_thetas(path: str) -> tuple[int, int]:
     try:

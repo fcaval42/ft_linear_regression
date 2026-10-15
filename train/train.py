@@ -1,5 +1,5 @@
-from global_variables import Global_variables
-from predict import estimate_price
+from utils.global_variables import Global_variables
+from predict.predict import estimate_price
 
 # on répète EPOCH fois jusqu'à convergence = descente de gradient
 def train(km_norm, price):

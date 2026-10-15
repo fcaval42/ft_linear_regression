@@ -1,8 +1,8 @@
-from global_variables import Global_variables
-from parsing import load_data
-from normalize import normalize, denormalize_thetas
-from train import train
-from plot import plot_data_with_regression
+from utils.global_variables import Global_variables
+from train.parsing import load_data
+from train.normalize import normalize, denormalize_thetas
+from train.train import train
+from utils.plot import plot_data_with_regression
 
 
 def save_thetas(theta0, theta1, path="thetas.txt"):
