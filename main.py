@@ -1,19 +1,9 @@
 import sys
+from global_variables import Global_variables
 from parsing import load_data
 from predict import load_thetas, estimate_price
 from normalize import normalize, denormalize_thetas
 from train import train
-
-
-def input_user() -> float:
-    while True:
-        try:
-            mileage = float(input("Enter a mileage: "))
-            if mileage < 0:
-                raise ValueError("")
-            return mileage
-        except ValueError:
-            print("The value must be a number (positive)")
 
 
 def save_thetas(theta0, theta1, path="thetas.txt"):
@@ -25,7 +15,7 @@ def main():
     try:
         km, price = load_data("data.csv")
     except ValueError as e:
-        print(f"Erreur : {e}")
+        print("\n" + Global_variables.ERROR + f": {e}")
         return
 
     # 1. normaliser les km (les prix restent tels quels)
@@ -39,8 +29,10 @@ def main():
 
     # 4. sauvegarder pour predict.py
     save_thetas(theta0, theta1)
-    print(f"\nEntrainement termine : theta0 = {theta0:.6f}, theta1 = {theta1:.8f}")
-    print(f"Parametres sauvegardes dans 'thetas.txt'")
+    print("\n" + Global_variables.INFO + f" Entrainement terminé : "
+          f"theta0 = {theta0:.6f}, theta1 = {theta1:.8f}")
+    print("\n" + Global_variables.INFO + f" Parametres sauvegardes dans "
+          "'thetas.txt'" + "\n")
 
 
 if __name__ == "__main__":

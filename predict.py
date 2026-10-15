@@ -1,3 +1,6 @@
+import sys
+from global_variables import Global_variables
+
 def load_thetas(path: str) -> tuple[int, int]:
     try:
         with open(path) as f:
@@ -12,3 +15,24 @@ def load_thetas(path: str) -> tuple[int, int]:
 def estimate_price(theta0, theta1, mileage):
     return theta0 + theta1 * mileage
 
+def input_user() -> float:
+    while True:
+        try:
+            mileage = float(input("Enter a mileage: "))
+            if mileage < 0:
+                raise ValueError("")
+            return mileage
+        except ValueError:
+            print("\n" + Global_variables.ERROR + "The value must be "
+                  "a number (positive)")
+
+
+if __name__ == "__main__":
+    try:
+        mileage = input_user()
+        theta0, theta1 = load_thetas("thetas.txt")
+        price = estimate_price(theta0, theta1, mileage)
+        print(f"\n{Global_variables.INFO} Estimated price: {price:.2f}")
+    except Exception as e:
+        print(f"\n{Global_variables.ERROR}: {e}")
+        sys.exit(1)
