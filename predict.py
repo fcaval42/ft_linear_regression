@@ -12,9 +12,6 @@ def load_thetas(path: str) -> tuple[int, int]:
     return theta0, theta1
 
 
-def estimate_price(theta0, theta1, mileage):
-    return theta0 + theta1 * mileage
-
 def input_user() -> float:
     while True:
         try:
@@ -27,12 +24,20 @@ def input_user() -> float:
                   "a number (positive)")
 
 
-if __name__ == "__main__":
+def estimate_price(theta0, theta1, mileage):
+    return theta0 + theta1 * mileage
+
+
+def predict():
+
+    print("\n" + " \033[33mPREDICTION\033[0m ".center(79, "-") + "\n")
+
     try:
         mileage = input_user()
         theta0, theta1 = load_thetas("thetas.txt")
         price = estimate_price(theta0, theta1, mileage)
         print(f"\n{Global_variables.INFO} Estimated price: {price:.2f}")
+        print("\n" + "".center(79, "_") + "\n")
     except Exception as e:
         print(f"\n{Global_variables.ERROR}: {e}")
-        sys.exit(1)
+        sys.exit()

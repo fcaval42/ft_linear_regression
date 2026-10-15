@@ -25,6 +25,6 @@ def train(km_norm, price):
 
         # debug
         if epoch % 1000 == 0:
-            print(f"epoch {epoch:5d} | erreur moyenne = {sum0 / m:10.2f}")
+            print(f"epoch {epoch:5d} | average error = {sum0 / m:10.2f}")
 
     return theta0, theta1
