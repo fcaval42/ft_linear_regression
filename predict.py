@@ -6,7 +6,7 @@ def load_thetas(path: str) -> tuple[int, int]:
         with open(path) as f:
             theta0 = float(f.readline()) # ligne 1
             theta1 = float(f.readline()) # ligne 2
-        print("\n" + Global_variables.INFO + f"Loading Theta :" + "\n")
+        print("\n" + Global_variables.INFO + f" Loading Theta :" + "\n")
         print(f"Theta0 = {theta0}")
         print(f"Theta1 = {theta1}\n")
     except (FileNotFoundError, ValueError):
@@ -41,8 +41,13 @@ def predict():
         mileage = input_user()
         theta0, theta1 = load_thetas("thetas.txt")
         price = estimate_price(theta0, theta1, mileage)
-        print(f"\n{Global_variables.INFO} Estimated price: {price:.2f}")
-        print("\n" + "".center(79, "_") + "\n")
+
+        if price < 0:
+            print("\n" + Global_variables.INFO + " Your car is worthless with that many kilometers "
+                  f"on it... Sorry bro (result : {price})")
+        else:
+            print(f"\n{Global_variables.INFO} Estimated price: {price:.2f}")
+            print("\n" + "".center(79, "_") + "\n")
     except Exception as e:
         print(f"\n{Global_variables.ERROR}: {e}")
         sys.exit()
