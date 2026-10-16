@@ -1,5 +1,6 @@
 import csv
 
+
 def load_data(file_name: str) -> tuple[list[float], list[float]]:
     try:
         with open(file_name, newline='') as f:
@@ -35,4 +36,3 @@ def load_data(file_name: str) -> tuple[list[float], list[float]]:
 
     except FileNotFoundError:
         raise ValueError(f"File not found: {file_name}")
-

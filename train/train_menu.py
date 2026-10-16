@@ -5,12 +5,13 @@ from train.train import train
 from utils.plot import plot_data_with_regression
 
 
-def save_thetas(theta0, theta1, path="thetas.txt"):
+def save_thetas(theta0: float, theta1: float,
+                path: str = "thetas.txt") -> None:
     with open(path, "w") as f:
         f.write(f"{theta0}\n{theta1}\n")
 
 
-def training():
+def training() -> None:
 
     print("\n" + " \033[32mTRAINING\033[0m ".center(79, "-") + "\n")
 
@@ -35,5 +36,5 @@ def training():
     save_thetas(theta0, theta1)
     print("\n" + Global_variables.INFO + f" Training Complete : "
           f"theta0 = {theta0:.6f}, theta1 = {theta1:.8f}")
-    print("\n" + Global_variables.INFO + f" Backup settings saved in "
+    print("\n" + Global_variables.INFO + " Backup settings saved in "
           "'thetas.txt'" + "\n")

@@ -1,12 +1,13 @@
 import sys
 from utils.global_variables import Global_variables
 
-def load_thetas(path: str) -> tuple[int, int]:
+
+def load_thetas(path: str) -> tuple[float, float]:
     try:
         with open(path) as f:
-            theta0 = float(f.readline()) # ligne 1
-            theta1 = float(f.readline()) # ligne 2
-        print("\n" + Global_variables.INFO + f" Loading Theta :" + "\n")
+            theta0 = float(f.readline())
+            theta1 = float(f.readline())
+        print("\n" + Global_variables.INFO + " Loading Theta :" + "\n")
         print(f"Theta0 = {theta0}")
         print(f"Theta1 = {theta1}\n")
     except (FileNotFoundError, ValueError):
@@ -29,11 +30,11 @@ def input_user() -> float:
                   "a number (positive)")
 
 
-def estimate_price(theta0, theta1, mileage):
+def estimate_price(theta0: float, theta1: float, mileage: float) -> float:
     return theta0 + theta1 * mileage
 
 
-def predict():
+def predict() -> None:
 
     print("\n" + " \033[33mPREDICTION\033[0m ".center(79, "-") + "\n")
 
@@ -43,7 +44,8 @@ def predict():
         price = estimate_price(theta0, theta1, mileage)
 
         if price < 0:
-            print("\n" + Global_variables.INFO + " Your car is worthless with that many kilometers "
+            print("\n" + Global_variables.INFO + " Your car is worthless "
+                  "with that many kilometers "
                   f"on it... Sorry bro (result : {price})")
         else:
             print(f"\n{Global_variables.INFO} Estimated price: {price:.2f}")
